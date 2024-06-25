@@ -1,6 +1,7 @@
 package me.tubs.heidtools4.workApp
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -27,6 +28,7 @@ import me.tubs.heidtools4.workApp.view.Browse
 import me.tubs.heidtools4.workApp.view.addCheckin.AddCheckIn
 import me.tubs.heidtools4.workApp.view.Settings
 import me.tubs.heidtools4.workApp.view.View
+import me.tubs.heidtools4.workApp.view.addCheckin.AddCheckin2
 
 @OptIn(ExperimentalMaterial3Api::class)
 class WorkActivity : ComponentActivity() {
@@ -76,10 +78,12 @@ class WorkActivity : ComponentActivity() {
                         }
 
                         composable("${navStates.ADDCHECKIN}/{id}") {
-                            val id = it.arguments?.getString("id")!!.toLong()
-                            AddCheckIn(navStates, this@WorkActivity).View(CheckinViewModel.Builder(id,
-                                checkinDao = db.checkinDao(),this@WorkActivity).build()
-                            )
+                            val id = it.arguments?.getString("id")!!.toInt()
+                            /*AddCheckIn(navStates, this@WorkActivity).View(CheckinViewModel.Builder(id,
+                               checkinDao = db.checkinDao(),this@WorkActivity).build()
+                           )*/
+                            val intent = Intent(this@WorkActivity.baseContext,AddCheckin2::class.java).apply { putExtra("id",id) }
+                            startActivity(intent)
                         }
                         composable("${navStates.VIEW}/{id}/{day}"){
                             val id:Int = it.arguments?.getString("id")!!.toInt()

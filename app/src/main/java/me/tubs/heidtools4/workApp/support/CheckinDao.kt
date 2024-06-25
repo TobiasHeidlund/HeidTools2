@@ -25,7 +25,7 @@ interface CheckinDao {
 
 
     @Query("SELECT * FROM Checkin WHERE uid = :id LIMIT 1")
-    fun get(id: Long): LiveData<Checkin>
+    fun get(id: Int): LiveData<Checkin>
 
 
     @Query("SELECT * FROM Checkin WHERE date=:date")

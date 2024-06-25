@@ -21,7 +21,7 @@ class CheckinViewModel private constructor(): ViewModel(){
 
 
     data class Builder(var id:Long,val checkinDao: CheckinDao,val host:LifecycleOwner){
-        var checkin: LiveData<Checkin>? = if(id != 0L)  checkinDao.get(id) else null;
+        var checkin: LiveData<Checkin>? = if(id != 0L)  checkinDao.get(id.toInt()) else null;
         fun build():CheckinViewModel{
             return CheckinViewModel(checkin,checkinDao, host)
         }

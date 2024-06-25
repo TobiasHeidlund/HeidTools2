@@ -36,6 +36,17 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".workApp.view.addCheckin.AddCheckin2"
+            android:exported="true"
+            android:label="@string/add_checkinLaunch"
+            android:theme="@style/Theme.HeidTools4">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".test4"
             android:exported="true"
             android:label="@string/app_name"
